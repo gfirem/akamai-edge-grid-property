@@ -1,0 +1,19 @@
+{
+  "versions": {
+    "items": [
+      {
+        "accountId": "act_B-C-1FRYVMN",
+        "contractId": "ctr_C-1FRYVV3",
+        "assetId": "aid_10521361",
+        "groupId": "grp_111340",
+        "propertyId": "prp_428269",
+        "propertyName": "test.sandbox.akamaideveloper.com",
+        "propertyVersion": 1,
+        "updatedByUser": "argxyfqbz47u6n3e",
+        "updatedDate": "2017-12-27T19:54:57Z",
+        "productionStatus": "INACTIVE",
+        "stagingStatus": "INACTIVE"
+      }
+    ]
+  }
+}

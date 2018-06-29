@@ -1,0 +1,19 @@
+{
+  "accountId": "act_B-C-1FRYVMN",
+  "contractId": "ctr_C-1FRYVV3",
+  "groupId": "grp_111340",
+  "propertyId": "prp_428269",
+  "propertyName": "test.sandbox.akamaideveloper.com",
+  "propertyVersion": 1,
+  "etag": "aeec6d39077b9ab59698c9aa31f9203de2b1b40f",
+  "hostnames": {
+    "items": [
+      {
+        "cnameType": "EDGE_HOSTNAME",
+        "edgeHostnameId": "ehn_2802563",
+        "cnameFrom": "sandbox.akamaideveloper.com",
+        "cnameTo": "sandbox.akamaideveloper.com.edgesuite.net"
+      }
+    ]
+  }
+}

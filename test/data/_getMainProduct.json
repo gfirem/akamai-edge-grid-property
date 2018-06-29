@@ -1,0 +1,14 @@
+{
+  "accountId": "act_1-1TJZFB",
+  "contractId": "ctr_1-1TJZH5",
+  "products": {
+    "items": [
+      {
+        "groupId": "grp_111340",
+        "contractId": "ctr_C-1FRYVV3",
+        "productId": "prd_Download_Delivery",
+        "productName": "Download_Delivery"
+      }
+    ]
+  }
+}

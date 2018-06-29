@@ -1,0 +1,17 @@
+{
+  "properties": {
+    "items": [
+      {
+        "accountId": "act_B-C-1FRYVMN",
+        "contractId": "ctr_C-1FRYVV3",
+        "groupId": "grp_111340",
+        "propertyId": "prp_428269",
+        "propertyName": "test.sandbox.akamaideveloper.com",
+        "latestVersion": 1,
+        "stagingVersion": null,
+        "productionVersion": null,
+        "assetId": "aid_10521361"
+      }
+    ]
+  }
+}

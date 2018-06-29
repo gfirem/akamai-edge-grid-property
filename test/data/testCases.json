@@ -1,0 +1,2164 @@
+{
+  "queue": [
+    {
+      "function": "_retrieveEdgeHostnames",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "path": "/papi/v1/edgehostnames?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "edgeHostnames.items.length",
+        "comparison": "equal",
+        "value": 6
+      }
+    },
+    {
+      "function": "_retrieveEdgeHostnames",
+      "title": "check %s for invalid credential",
+      "errorMessage": "error checking %s for invalid credential",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 403,
+            "path": "/papi/v1/edgehostnames?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": null
+      }
+    },
+    {
+      "function": "_retrieveEdgeHostnames",
+      "title": "check %s for other error",
+      "errorMessage": "error checking %s for other error",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 500,
+            "path": "/papi/v1/edgehostnames?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_getMainProduct",
+      "params": [
+        "grp_111340",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getMainProduct",
+            "path": "/papi/v1/products?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "groupId",
+        "comparison": "equal",
+        "value": "grp_111340"
+      }
+    },
+    {
+      "function": "_getMainProduct",
+      "title": "check %s invalid credential",
+      "errorMessage": "error checking %s for invalid credential",
+      "params": [
+        "grp_111343",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 403,
+            "file": "_getMainProduct",
+            "path": "/papi/v1/products?contractId=ctr_C-1FRYVV3&groupId=grp_111343"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": null
+      }
+    },
+    {
+      "function": "_getMainProduct",
+      "title": "check %s invalid response",
+      "errorMessage": "error checking %s for invalid response",
+      "params": [
+        "grp_111342",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 500,
+            "file": "_getMainProduct",
+            "path": "/papi/v1/products?contractId=ctr_C-1FRYVV3&groupId=grp_111342"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_retrieveFormats",
+      "params": [],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_retrieveFormats",
+            "path": "/papi/v1/rule-formats"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "ruleFormats.items.length",
+        "comparison": "equal",
+        "value": 5
+      }
+    },
+    {
+      "function": "retrieveFormats",
+      "title": "check retrieve latest Formats",
+      "params": [
+        true
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats"
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "v2018-02-27"
+      }
+    },
+    {
+      "function": "retrieveFormats",
+      "title": "check retrieve oldest Formats",
+      "params": [
+        false
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats"
+        ]
+      },
+      "expectedResult": {
+        "property": "length",
+        "comparison": "equal",
+        "value": 5
+      }
+    },
+    {
+      "function": "_searchByValue",
+      "params": [
+        {
+          "propertyName": "prp_428269"
+        }
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_searchByValue",
+            "body": {
+              "propertyName": "prp_428269"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_searchByValue",
+            "body": {
+              "hostname": "prp_428269"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_searchByValue",
+            "body": {
+              "edgeHostname": "prp_428269"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "propertyName": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "hostname": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "edgeHostname": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "versions.items[0].propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_searchByValue",
+      "title": "check %s for server error",
+      "errorMessage": "error checking %s for server error",
+      "params": [
+        {
+          "propertyName": "prp_428269"
+        }
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 500,
+            "method": "POST",
+            "file": "_searchByValue",
+            "body": {
+              "propertyName": "prp_428269"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_findProperty",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_searchByValue"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getPropertyMetadata",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_findProperty",
+      "title": "check %s for empty list items",
+      "errorMessage": "error checking %s for empty list items",
+      "params": [
+        "prp_428270"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "propertyName": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "hostname": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_findPropertyEmpty",
+            "body": {
+              "edgeHostname": "prp_428270"
+            },
+            "path": "/papi/v1/search/find-by-value"
+          },
+          {
+            "statusCode": 200,
+            "file": "_getPropertyMetadata",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "expect": "assert",
+        "comparison": "isUndefined"
+      }
+    },
+    {
+      "function": "_getPropertyMetadata",
+      "params": [
+        "prp_428269",
+        "grp_111340",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getPropertyMetadata",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "groupId",
+        "comparison": "equal",
+        "value": "grp_111340"
+      }
+    },
+    {
+      "function": "_getProperty",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_getProperty",
+      "title": "check %s with a object property",
+      "errorMessage": "error checking %s with a object property",
+      "params": [
+        {
+          "accountId": "act_B-C-1FRYVMN",
+          "contractId": "ctr_C-1FRYVV3",
+          "groupId": "grp_111340",
+          "propertyId": "prp_428269",
+          "propertyName": "test.sandbox.akamaideveloper.com",
+          "latestVersion": 1,
+          "stagingVersion": null,
+          "productionVersion": null,
+          "assetId": "aid_10521361"
+        }
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_getProperty",
+      "title": "check %s for invalid property",
+      "errorMessage": "error checking %s for invalid property",
+      "params": [
+        "prp_428270"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428270?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "comparison": "equal",
+        "value": "Cannot find property:  prp_428270"
+      }
+    },
+    {
+      "function": "_getProperty",
+      "title": "check %s for invalid property string",
+      "errorMessage": "error checking %s for invalid property string",
+      "params": [
+        "428270"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428270?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "comparison": "equal",
+        "value": "Cannot find property:  428270"
+      }
+    },
+    {
+      "function": "_getHostnameList",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getHostnameList",
+            "path": "/papi/v1/properties/prp_428269/versions/1/hostnames/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "groupId",
+        "comparison": "equal",
+        "value": "grp_111340"
+      }
+    },
+    {
+      "function": "_getHostnameList",
+      "title": "check %s error from server",
+      "errorMessage": "error checking %s for error from server",
+      "params": [
+        "prp_428269",
+        2
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 500,
+            "file": "_getHostnameList",
+            "path": "/papi/v1/properties/prp_428269/versions/2/hostnames/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "_getHostnameList",
+      "title": "check %s invalid credential",
+      "errorMessage": "error checking %s for invalid credential",
+      "params": [
+        "prp_428269",
+        3
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 403,
+            "file": "_getHostnameList",
+            "path": "/papi/v1/properties/prp_428269/versions/3/hostnames/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "_getHostnameList",
+      "title": "check %s null response",
+      "errorMessage": "error checking %s for null response",
+      "params": [
+        "prp_428269",
+        4
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 600,
+            "file": "_invalid_response",
+            "path": "/papi/v1/properties/prp_428269/versions/4/hostnames/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 600
+      }
+    },
+    {
+      "function": "_getCloneConfig",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty",
+          "_getHostnameList",
+          "_getPropertyRules"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getCloneConfig",
+            "path": "/papi/v1/properties/prp_428269/versions/1?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyId",
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "_getNewProperty",
+      "params": [
+        "prp_428269",
+        "grp_111340",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "properties.items.length",
+        "comparison": "equal",
+        "value": 1
+      }
+    },
+    {
+      "function": "_getNewProperty",
+      "title": "check %s invalid credentials",
+      "errorMessage": "error checking %s for invalid credentials",
+      "params": [
+        "prp_428269",
+        "grp_111341",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 403,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111341"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": null
+      }
+    },
+    {
+      "function": "_getNewProperty",
+      "title": "check %s invalid response",
+      "errorMessage": "error checking %s for invalid response",
+      "params": [
+        "prp_428269",
+        "grp_111343",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 500,
+            "body": null,
+            "file": "_getNewProperty",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111343"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_getPropertyList",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getPropertyList",
+            "path": "/papi/v1/properties?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "properties.items.length",
+        "comparison": "equal",
+        "value": 1136
+      }
+    },
+    {
+      "function": "_getPropertyList",
+      "title": "check %s for invalid credential",
+      "errorMessage": "error checking %s for invalid credential",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 403,
+            "file": "_getPropertyList",
+            "path": "/papi/v1/properties?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": null
+      }
+    },
+    {
+      "function": "_getPropertyList",
+      "title": "check %s for other error",
+      "errorMessage": "error checking %s for other error",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 500,
+            "file": "_getPropertyList",
+            "path": "/papi/v1/properties?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_getGroupList",
+      "params": [],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getGroupList",
+            "path": "/papi/v1/groups"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "accountId",
+        "comparison": "equal",
+        "value": "act_B-C-1FRYVMN"
+      }
+    },
+    {
+      "function": "_getPropertyRules",
+      "params": [
+        "prp_428269",
+        null
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getPropertyRules",
+            "path": "/papi/v1/properties/prp_428269/versions/1/rules?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_getPropertyRules",
+      "title": "check %s for other error",
+      "errorMessage": "error checking %s for other error",
+      "params": [
+        "prp_428269",
+        null
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 500,
+            "file": "_getPropertyRules",
+            "path": "/papi/v1/properties/prp_428269/versions/1/rules?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_copyPropertyVersion",
+      "params": [
+        "prp_428269",
+        1
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_copyPropertyVersion",
+            "method": "POST",
+            "path": "/papi/v1/properties/prp_428269/versions?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "2"
+      }
+    },
+    {
+      "function": "_copyPropertyVersion",
+      "title": "check %s for 404 response",
+      "errorMessage": "error checking %s for 404 response",
+      "params": [
+        "prp_428269",
+        1
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 404,
+            "file": "_copyPropertyVersion",
+            "method": "POST",
+            "path": "/papi/v1/properties/prp_428269/versions?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "expect": "assert",
+        "comparison": "isDefined"
+      }
+    },
+    {
+      "function": "_copyPropertyVersion",
+      "title": "check %s for server error",
+      "errorMessage": "error checking %s for server error",
+      "params": [
+        "prp_428269",
+        1
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 500,
+            "file": "_copyPropertyVersion",
+            "method": "POST",
+            "path": "/papi/v1/properties/prp_428269/versions?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedError": {
+        "property": "statusCode",
+        "comparison": "equal",
+        "value": 500
+      }
+    },
+    {
+      "function": "_createProperty",
+      "params": [
+        "grp_111340",
+        "ctr_C-1FRYVV3",
+        "test.sandbox.akamaideveloper.com",
+        "prd_SPM"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_createProperty",
+            "body": {
+              "cloneFrom": null,
+              "productId": "prd_SPM",
+              "propertyName": "test.sandbox.akamaideveloper.com"
+            },
+            "path": "/papi/v1/properties/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "_updatePropertyRules",
+      "params": [
+        "prp_428269",
+        1,
+        {
+          "name": "default",
+          "children": [
+            {
+              "name": "Performance",
+              "children": [
+                {
+                  "name": "JPEG Images",
+                  "children": [],
+                  "behaviors": [
+                    {
+                      "name": "adaptiveImageCompression",
+                      "options": {
+                        "compressMobile": true,
+                        "compressStandard": true,
+                        "tier1StandardCompressionMethod": "BYPASS",
+                        "tier2MobileCompressionValue": 60,
+                        "tier2StandardCompressionMethod": "BYPASS",
+                        "tier3MobileCompressionMethod": "COMPRESS",
+                        "tier3MobileCompressionValue": 40,
+                        "tier3StandardCompressionMethod": "COMPRESS",
+                        "tier3StandardCompressionValue": 40,
+                        "title_aic_mobile": "",
+                        "title_aic_nonmobile": "",
+                        "tier1MobileCompressionMethod": "BYPASS",
+                        "tier2MobileCompressionMethod": "COMPRESS"
+                      }
+                    }
+                  ],
+                  "criteria": [
+                    {
+                      "name": "fileExtension",
+                      "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "IS_ONE_OF",
+                        "values": [
+                          "jpg",
+                          "jpeg",
+                          "jpe",
+                          "jif",
+                          "jfif",
+                          "jfi"
+                        ]
+                      }
+                    }
+                  ],
+                  "criteriaMustSatisfy": "all",
+                  "comments": "Improves load time by applying Adaptive Image Compression (AIC) to all JPEG images. The poorer the connection quality, the more AIC compresses the image files."
+                },
+                {
+                  "name": "Compressible Objects",
+                  "children": [],
+                  "behaviors": [
+                    {
+                      "name": "gzipResponse",
+                      "options": {
+                        "behavior": "ALWAYS"
+                      }
+                    }
+                  ],
+                  "criteria": [
+                    {
+                      "name": "contentType",
+                      "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "IS_ONE_OF",
+                        "matchWildcard": true,
+                        "values": [
+                          "text/*",
+                          "application/javascript",
+                          "application/x-javascript",
+                          "application/x-javascript*",
+                          "application/json",
+                          "application/x-json",
+                          "application/*+json",
+                          "application/*+xml",
+                          "application/text",
+                          "application/vnd.microsoft.icon",
+                          "application/vnd-ms-fontobject",
+                          "application/x-font-ttf",
+                          "application/x-font-opentype",
+                          "application/x-font-truetype",
+                          "application/xmlfont/eot",
+                          "application/xml",
+                          "font/opentype",
+                          "font/otf",
+                          "font/eot",
+                          "image/svg+xml",
+                          "image/vnd.microsoft.icon"
+                        ]
+                      }
+                    }
+                  ],
+                  "criteriaMustSatisfy": "all",
+                  "comments": "Compresses content to improve performance of clients with slow connections. Applies Last Mile Acceleration to requests when the returned object supports gzip compression."
+                }
+              ],
+              "behaviors": [
+                {
+                  "name": "enhancedAkamaiProtocol",
+                  "options": {
+                    "display": ""
+                  }
+                },
+                {
+                  "name": "http2",
+                  "options": {
+                    "enabled": ""
+                  }
+                },
+                {
+                  "name": "allowTransferEncoding",
+                  "options": {
+                    "enabled": true
+                  }
+                },
+                {
+                  "name": "removeVary",
+                  "options": {
+                    "enabled": true
+                  }
+                },
+                {
+                  "name": "prefetch",
+                  "options": {
+                    "enabled": true
+                  }
+                }
+              ],
+              "criteria": [],
+              "criteriaMustSatisfy": "all",
+              "comments": "Improves the performance of delivering objects to end users. Behaviors in this rule are applied to all requests as appropriate."
+            },
+            {
+              "name": "Offload",
+              "children": [
+                {
+                  "name": "CSS and JavaScript",
+                  "children": [],
+                  "behaviors": [
+                    {
+                      "name": "caching",
+                      "options": {
+                        "behavior": "MAX_AGE",
+                        "mustRevalidate": false,
+                        "ttl": "1d"
+                      }
+                    },
+                    {
+                      "name": "prefreshCache",
+                      "options": {
+                        "enabled": true,
+                        "prefreshval": 90
+                      }
+                    },
+                    {
+                      "name": "prefetchable",
+                      "options": {
+                        "enabled": true
+                      }
+                    }
+                  ],
+                  "criteria": [
+                    {
+                      "name": "fileExtension",
+                      "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "IS_ONE_OF",
+                        "values": [
+                          "css",
+                          "js"
+                        ]
+                      }
+                    }
+                  ],
+                  "criteriaMustSatisfy": "any",
+                  "comments": "Overrides the default caching behavior for CSS and JavaScript objects that are cached on the edge server. Because these object types are dynamic, the TTL is brief."
+                },
+                {
+                  "name": "Static Objects",
+                  "children": [],
+                  "behaviors": [
+                    {
+                      "name": "caching",
+                      "options": {
+                        "behavior": "MAX_AGE",
+                        "mustRevalidate": false,
+                        "ttl": "7d"
+                      }
+                    },
+                    {
+                      "name": "prefreshCache",
+                      "options": {
+                        "enabled": true,
+                        "prefreshval": 90
+                      }
+                    },
+                    {
+                      "name": "prefetchable",
+                      "options": {
+                        "enabled": true
+                      }
+                    }
+                  ],
+                  "criteria": [
+                    {
+                      "name": "fileExtension",
+                      "options": {
+                        "matchCaseSensitive": false,
+                        "matchOperator": "IS_ONE_OF",
+                        "values": [
+                          "aif",
+                          "aiff",
+                          "au",
+                          "avi",
+                          "bin",
+                          "bmp",
+                          "cab",
+                          "carb",
+                          "cct",
+                          "cdf",
+                          "class",
+                          "doc",
+                          "dcr",
+                          "dtd",
+                          "exe",
+                          "flv",
+                          "gcf",
+                          "gff",
+                          "gif",
+                          "grv",
+                          "hdml",
+                          "hqx",
+                          "ico",
+                          "ini",
+                          "jpeg",
+                          "jpg",
+                          "mov",
+                          "mp3",
+                          "nc",
+                          "pct",
+                          "pdf",
+                          "png",
+                          "ppc",
+                          "pws",
+                          "swa",
+                          "swf",
+                          "txt",
+                          "vbs",
+                          "w32",
+                          "wav",
+                          "wbmp",
+                          "wml",
+                          "wmlc",
+                          "wmls",
+                          "wmlsc",
+                          "xsd",
+                          "zip",
+                          "pict",
+                          "tif",
+                          "tiff",
+                          "mid",
+                          "midi",
+                          "ttf",
+                          "eot",
+                          "woff",
+                          "woff2",
+                          "otf",
+                          "svg",
+                          "svgz",
+                          "webp",
+                          "jxr",
+                          "jar",
+                          "jp2"
+                        ]
+                      }
+                    }
+                  ],
+                  "criteriaMustSatisfy": "any",
+                  "comments": "Overrides the default caching behavior for images, music, and similar objects that are cached on the edge server. Because these object types are static, the TTL is long."
+                },
+                {
+                  "name": "Uncacheable Responses",
+                  "children": [],
+                  "behaviors": [
+                    {
+                      "name": "downstreamCache",
+                      "options": {
+                        "behavior": "TUNNEL_ORIGIN"
+                      }
+                    }
+                  ],
+                  "criteria": [
+                    {
+                      "name": "cacheability",
+                      "options": {
+                        "matchOperator": "IS_NOT",
+                        "value": "CACHEABLE"
+                      }
+                    }
+                  ],
+                  "criteriaMustSatisfy": "all",
+                  "comments": "Overrides the default downstream caching behavior for uncacheable object types. Instructs the edge server to pass Cache-Control and/or Expire headers from the origin to the client."
+                }
+              ],
+              "behaviors": [
+                {
+                  "name": "caching",
+                  "options": {
+                    "behavior": "MAX_AGE",
+                    "mustRevalidate": false,
+                    "ttl": "86400s"
+                  }
+                },
+                {
+                  "name": "cacheError",
+                  "options": {
+                    "enabled": true,
+                    "preserveStale": true,
+                    "ttl": "10s"
+                  }
+                },
+                {
+                  "name": "downstreamCache",
+                  "options": {
+                    "behavior": "BUST"
+                  }
+                },
+                {
+                  "name": "tieredDistribution",
+                  "options": {
+                    "enabled": true,
+                    "tieredDistributionMap": "CH2"
+                  }
+                }
+              ],
+              "criteria": [],
+              "criteriaMustSatisfy": "all",
+              "comments": "Controls caching, which offloads traffic away from the origin. Most objects types are not cached. However, the child rules override this behavior for certain subsets of requests."
+            }
+          ],
+          "behaviors": [
+            {
+              "name": "origin",
+              "options": {
+                "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                "compress": true,
+                "enableTrueClientIp": false,
+                "forwardHostHeader": "ORIGIN_HOSTNAME",
+                "httpPort": 80,
+                "originType": "CUSTOMER",
+                "hostname": "purgedemo.herokuapp.com"
+              }
+            },
+            {
+              "name": "cpCode",
+              "options": {
+                "value": {
+                  "id": 657536
+                }
+              }
+            },
+            {
+              "name": "allowPost",
+              "options": {
+                "allowWithoutContentLength": false,
+                "enabled": true
+              }
+            },
+            {
+              "name": "realUserMonitoring",
+              "options": {
+                "enabled": true
+              }
+            }
+          ],
+          "options": {
+            "is_secure": false
+          },
+          "variables": [],
+          "comments": "The behaviors in the Default Rule apply to all requests for the property hostname(s) unless another rule overrides the Default Rule settings."
+        }
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getNewProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_updatePropertyRules",
+            "method": "PUT",
+            "path": "/papi/v1/properties/prp_428269/versions/1/rules?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "errors.length",
+        "comparison": "equal",
+        "value": 1
+      }
+    },
+    {
+      "function": "_createCPCode",
+      "params": [
+        "grp_111340",
+        "ctr_C-1FRYVV3",
+        "prd_Download_Delivery",
+        "SME WAA"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_createCPCode",
+            "body": {
+              "productId": "prd_Download_Delivery",
+              "cpcodeName": "SME WAA"
+            },
+            "path": "/papi/v1/cpcodes?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "33190"
+      }
+    },
+    {
+      "function": "_updatePropertyBehaviors",
+      "params": [
+        {
+          "rules": {
+            "name": "default",
+            "children": [
+              {
+                "name": "Performance",
+                "children": [
+                  {
+                    "name": "JPEG Images",
+                    "children": [],
+                    "behaviors": [
+                      {
+                        "name": "adaptiveImageCompression",
+                        "options": {
+                          "compressMobile": true,
+                          "compressStandard": true,
+                          "tier1StandardCompressionMethod": "BYPASS",
+                          "tier2MobileCompressionValue": 60,
+                          "tier2StandardCompressionMethod": "BYPASS",
+                          "tier3MobileCompressionMethod": "COMPRESS",
+                          "tier3MobileCompressionValue": 40,
+                          "tier3StandardCompressionMethod": "COMPRESS",
+                          "tier3StandardCompressionValue": 40,
+                          "title_aic_mobile": "",
+                          "title_aic_nonmobile": "",
+                          "tier1MobileCompressionMethod": "BYPASS",
+                          "tier2MobileCompressionMethod": "COMPRESS"
+                        }
+                      }
+                    ],
+                    "criteria": [
+                      {
+                        "name": "fileExtension",
+                        "options": {
+                          "matchCaseSensitive": false,
+                          "matchOperator": "IS_ONE_OF",
+                          "values": [
+                            "jpg",
+                            "jpeg",
+                            "jpe",
+                            "jif",
+                            "jfif",
+                            "jfi"
+                          ]
+                        }
+                      }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Improves load time by applying Adaptive Image Compression (AIC) to all JPEG images. The poorer the connection quality, the more AIC compresses the image files."
+                  },
+                  {
+                    "name": "Compressible Objects",
+                    "children": [],
+                    "behaviors": [
+                      {
+                        "name": "gzipResponse",
+                        "options": {
+                          "behavior": "ALWAYS"
+                        }
+                      }
+                    ],
+                    "criteria": [
+                      {
+                        "name": "contentType",
+                        "options": {
+                          "matchCaseSensitive": false,
+                          "matchOperator": "IS_ONE_OF",
+                          "matchWildcard": true,
+                          "values": [
+                            "text/*",
+                            "application/javascript",
+                            "application/x-javascript",
+                            "application/x-javascript*",
+                            "application/json",
+                            "application/x-json",
+                            "application/*+json",
+                            "application/*+xml",
+                            "application/text",
+                            "application/vnd.microsoft.icon",
+                            "application/vnd-ms-fontobject",
+                            "application/x-font-ttf",
+                            "application/x-font-opentype",
+                            "application/x-font-truetype",
+                            "application/xmlfont/eot",
+                            "application/xml",
+                            "font/opentype",
+                            "font/otf",
+                            "font/eot",
+                            "image/svg+xml",
+                            "image/vnd.microsoft.icon"
+                          ]
+                        }
+                      }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Compresses content to improve performance of clients with slow connections. Applies Last Mile Acceleration to requests when the returned object supports gzip compression."
+                  }
+                ],
+                "behaviors": [
+                  {
+                    "name": "enhancedAkamaiProtocol",
+                    "options": {
+                      "display": ""
+                    }
+                  },
+                  {
+                    "name": "http2",
+                    "options": {
+                      "enabled": ""
+                    }
+                  },
+                  {
+                    "name": "allowTransferEncoding",
+                    "options": {
+                      "enabled": true
+                    }
+                  },
+                  {
+                    "name": "removeVary",
+                    "options": {
+                      "enabled": true
+                    }
+                  },
+                  {
+                    "name": "prefetch",
+                    "options": {
+                      "enabled": true
+                    }
+                  },
+                  {
+                    "name": "sureRoute",
+                    "options": {}
+                  }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": "Improves the performance of delivering objects to end users. Behaviors in this rule are applied to all requests as appropriate."
+              },
+              {
+                "name": "Offload",
+                "children": [
+                  {
+                    "name": "CSS and JavaScript",
+                    "children": [],
+                    "behaviors": [
+                      {
+                        "name": "caching",
+                        "options": {
+                          "behavior": "MAX_AGE",
+                          "mustRevalidate": false,
+                          "ttl": "1d"
+                        }
+                      },
+                      {
+                        "name": "prefreshCache",
+                        "options": {
+                          "enabled": true,
+                          "prefreshval": 90
+                        }
+                      },
+                      {
+                        "name": "prefetchable",
+                        "options": {
+                          "enabled": true
+                        }
+                      }
+                    ],
+                    "criteria": [
+                      {
+                        "name": "fileExtension",
+                        "options": {
+                          "matchCaseSensitive": false,
+                          "matchOperator": "IS_ONE_OF",
+                          "values": [
+                            "css",
+                            "js"
+                          ]
+                        }
+                      }
+                    ],
+                    "criteriaMustSatisfy": "any",
+                    "comments": "Overrides the default caching behavior for CSS and JavaScript objects that are cached on the edge server. Because these object types are dynamic, the TTL is brief."
+                  },
+                  {
+                    "name": "Static Objects",
+                    "children": [],
+                    "behaviors": [
+                      {
+                        "name": "caching",
+                        "options": {
+                          "behavior": "MAX_AGE",
+                          "mustRevalidate": false,
+                          "ttl": "7d"
+                        }
+                      },
+                      {
+                        "name": "prefreshCache",
+                        "options": {
+                          "enabled": true,
+                          "prefreshval": 90
+                        }
+                      },
+                      {
+                        "name": "prefetchable",
+                        "options": {
+                          "enabled": true
+                        }
+                      }
+                    ],
+                    "criteria": [
+                      {
+                        "name": "fileExtension",
+                        "options": {
+                          "matchCaseSensitive": false,
+                          "matchOperator": "IS_ONE_OF",
+                          "values": [
+                            "aif",
+                            "aiff",
+                            "au",
+                            "avi",
+                            "bin",
+                            "bmp",
+                            "cab",
+                            "carb",
+                            "cct",
+                            "cdf",
+                            "class",
+                            "doc",
+                            "dcr",
+                            "dtd",
+                            "exe",
+                            "flv",
+                            "gcf",
+                            "gff",
+                            "gif",
+                            "grv",
+                            "hdml",
+                            "hqx",
+                            "ico",
+                            "ini",
+                            "jpeg",
+                            "jpg",
+                            "mov",
+                            "mp3",
+                            "nc",
+                            "pct",
+                            "pdf",
+                            "png",
+                            "ppc",
+                            "pws",
+                            "swa",
+                            "swf",
+                            "txt",
+                            "vbs",
+                            "w32",
+                            "wav",
+                            "wbmp",
+                            "wml",
+                            "wmlc",
+                            "wmls",
+                            "wmlsc",
+                            "xsd",
+                            "zip",
+                            "pict",
+                            "tif",
+                            "tiff",
+                            "mid",
+                            "midi",
+                            "ttf",
+                            "eot",
+                            "woff",
+                            "woff2",
+                            "otf",
+                            "svg",
+                            "svgz",
+                            "webp",
+                            "jxr",
+                            "jar",
+                            "jp2"
+                          ]
+                        }
+                      }
+                    ],
+                    "criteriaMustSatisfy": "any",
+                    "comments": "Overrides the default caching behavior for images, music, and similar objects that are cached on the edge server. Because these object types are static, the TTL is long."
+                  },
+                  {
+                    "name": "Uncacheable Responses",
+                    "children": [],
+                    "behaviors": [
+                      {
+                        "name": "downstreamCache",
+                        "options": {
+                          "behavior": "TUNNEL_ORIGIN"
+                        }
+                      }
+                    ],
+                    "criteria": [
+                      {
+                        "name": "cacheability",
+                        "options": {
+                          "matchOperator": "IS_NOT",
+                          "value": "CACHEABLE"
+                        }
+                      }
+                    ],
+                    "criteriaMustSatisfy": "all",
+                    "comments": "Overrides the default downstream caching behavior for uncacheable object types. Instructs the edge server to pass Cache-Control and/or Expire headers from the origin to the client."
+                  }
+                ],
+                "behaviors": [
+                  {
+                    "name": "caching",
+                    "options": {
+                      "behavior": "MAX_AGE",
+                      "mustRevalidate": false,
+                      "ttl": "86400s"
+                    }
+                  },
+                  {
+                    "name": "cacheError",
+                    "options": {
+                      "enabled": true,
+                      "preserveStale": true,
+                      "ttl": "10s"
+                    }
+                  },
+                  {
+                    "name": "downstreamCache",
+                    "options": {
+                      "behavior": "BUST"
+                    }
+                  },
+                  {
+                    "name": "tieredDistribution",
+                    "options": {
+                      "enabled": true,
+                      "tieredDistributionMap": "CH2"
+                    }
+                  }
+                ],
+                "criteria": [],
+                "criteriaMustSatisfy": "all",
+                "comments": "Controls caching, which offloads traffic away from the origin. Most objects types are not cached. However, the child rules override this behavior for certain subsets of requests."
+              }
+            ],
+            "behaviors": [
+              {
+                "name": "origin",
+                "options": {
+                  "cacheKeyHostname": "ORIGIN_HOSTNAME",
+                  "compress": true,
+                  "enableTrueClientIp": false,
+                  "forwardHostHeader": "ORIGIN_HOSTNAME",
+                  "httpPort": 80,
+                  "originType": "CUSTOMER",
+                  "hostname": "purgedemo.herokuapp.com"
+                }
+              },
+              {
+                "name": "cpCode",
+                "options": {
+                  "value": {
+                    "id": 657536
+                  }
+                }
+              },
+              {
+                "name": "allowPost",
+                "options": {
+                  "allowWithoutContentLength": false,
+                  "enabled": true
+                }
+              },
+              {
+                "name": "realUserMonitoring",
+                "options": {
+                  "enabled": true
+                }
+              }
+            ],
+            "options": {
+              "is_secure": false
+            },
+            "variables": [],
+            "comments": "The behaviors in the Default Rule apply to all requests for the property hostname(s) unless another rule overrides the Default Rule settings."
+          }
+        },
+        "test.sandbox.akamaideveloper.com",
+        "sandbox.akamaideveloper.com",
+        "33190",
+        "akamaideveloper.com"
+      ],
+      "response": {},
+      "expectedResult": {
+        "property": "rules.behaviors[0].options.hostname",
+        "comparison": "equal",
+        "value": "akamaideveloper.com"
+      }
+    },
+    {
+      "function": "searchProperties",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_searchByValue"
+        ]
+      },
+      "expectedResult": {
+        "property": "versions.items[0].propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "retrieveGroups",
+      "params": [],
+      "response": {
+        "dependOn": [
+          "_getGroupList"
+        ]
+      },
+      "expectedResult": {
+        "property": "length",
+        "comparison": "equal",
+        "value": 1
+      }
+    },
+    {
+      "function": "retrieve",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getPropertyRules",
+          "_getProperty"
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "retrieve",
+      "title": "check %s with hostnames",
+      "errorMessage": "error checking %s with hostnames",
+      "params": [
+        "prp_428269",
+        0,
+        "sandbox.akamaideveloper.com"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getLatestVersion",
+          "_getPropertyRules",
+          "_getProperty",
+          "_getHostnameList"
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "retrievePropertyRuleFormat",
+      "params": [
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "retrieve"
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyName",
+        "comparison": "equal",
+        "value": "test.sandbox.akamaideveloper.com"
+      }
+    },
+    {
+      "function": "_getPropertyInfo",
+      "params": [
+        "ctr_C-1FRYVV3",
+        "grp_111340"
+      ],
+      "response": {
+        "dependOn": [
+          "_getGroupList",
+          "_getMainProduct"
+        ]
+      },
+      "expectedResult": {
+        "property": "productName",
+        "comparison": "equal",
+        "value": "Download_Delivery"
+      }
+    },
+    {
+      "function": "_createEdgeHostname",
+      "params": [
+        "grp_111340",
+        "ctr_C-1FRYVV3",
+        ""
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_createEdgeHostname",
+            "path": "/papi/v1/edgehostnames?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "ehn_2802563"
+      }
+    },
+    {
+      "function": "_activateProperty",
+      "params": [
+        "prp_428269",
+        1
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_activateProperty",
+            "path": "/papi/v1/properties/prp_428269/activations?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "atv_67037"
+      }
+    },
+    {
+      "function": "_deactivateProperty",
+      "params": [
+        "prp_428269",
+        1
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "POST",
+            "file": "_activateProperty",
+            "path": "/papi/v1/properties/prp_428269/activations?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "atv_67037"
+      }
+    },
+    {
+      "function": "_pollActivation",
+      "params": [
+        "prp_428269",
+        "atv_67037"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_pollActivation",
+            "path": "/papi/v1/properties/prp_428269/activations/atv_67037?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": true
+      }
+    },
+    {
+      "function": "_getAssetIds",
+      "params": [
+        "act_B-C-1FRYVMN",
+        "grp_111340"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getAssetIds",
+            "path": "/user-admin/v1/accounts/act_B-C-1FRYVMN/groups/grp_111340/properties"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "length",
+        "comparison": "equal",
+        "value": 1
+      }
+    },
+    {
+      "function": "_moveProperty",
+      "params": [
+        "prp_428269",
+        "grp_111340"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getAssetIds",
+            "path": "/user-admin/v1/accounts/B-C-1FRYVMN/groups/111340/properties"
+          },
+          {
+            "statusCode": 204,
+            "method": "PUT",
+            "file": "_pollActivation",
+            "path": "/user-admin/v1/accounts/B-C-1FRYVMN/properties/10521361"
+          }
+        ]
+      },
+      "expectedResult": {
+        "expect": "assert",
+        "comparison": "isUndefined"
+      }
+    },
+    {
+      "function": "_deleteConfig",
+      "params": [
+        {
+          "accountId": "act_B-C-1FRYVMN",
+          "contractId": "ctr_C-1FRYVV3",
+          "groupId": "grp_111340",
+          "propertyId": "prp_428269",
+          "propertyName": "test.sandbox.akamaideveloper.com",
+          "latestVersion": 1,
+          "stagingVersion": null,
+          "productionVersion": null,
+          "assetId": "aid_10521361"
+        }
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "DELETE",
+            "file": "_deleteConfig",
+            "path": "/papi/v1/properties/prp_428269?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "message",
+        "comparison": "equal",
+        "value": "Deletion Successful."
+      }
+    },
+    {
+      "function": "_assignHostnames",
+      "params": [
+        "grp_111340",
+        "ctr_C-1FRYVV3",
+        "prp_428269",
+        "ehn_2802563",
+        "prp_428269"
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_searchByValue",
+          "_getPropertyMetadata",
+          "_getHostnameList",
+          "_getProperty"
+        ],
+        "queue": [
+          {
+            "statusCode": 200,
+            "method": "PUT",
+            "file": "_assignHostnames",
+            "path": "/papi/v1/properties/prp_428269/versions/1/hostnames/?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyId",
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "_getEHNId",
+      "params": [
+        "prp_428269",
+        1,
+        "grp_111340",
+        "ctr_C-1FRYVV3"
+      ],
+      "response": {
+        "queue": [
+          {
+            "statusCode": 200,
+            "file": "_getHostnameList",
+            "path": "/papi/v1/properties/prp_428269/versions/1/hostnames?contractId=ctr_C-1FRYVV3&groupId=grp_111340"
+          }
+        ]
+      },
+      "expectedResult": {
+        "property": "propertyId",
+        "comparison": "equal",
+        "value": "prp_428269"
+      }
+    },
+    {
+      "function": "createNewPropertyVersion",
+      "params": [
+        {
+          "accountId": "act_B-C-1FRYVMN",
+          "contractId": "ctr_C-1FRYVV3",
+          "groupId": "grp_111340",
+          "propertyId": "prp_428269",
+          "propertyName": "test.sandbox.akamaideveloper.com",
+          "latestVersion": 1,
+          "stagingVersion": null,
+          "productionVersion": null,
+          "assetId": "aid_10521361"
+        }
+      ],
+      "response": {
+        "dependOn": [
+          "_retrieveFormats",
+          "_getNewProperty",
+          "_copyPropertyVersion"
+        ]
+      },
+      "expectedResult": {
+        "comparison": "equal",
+        "value": "2"
+      }
+    }
+  ]
+}

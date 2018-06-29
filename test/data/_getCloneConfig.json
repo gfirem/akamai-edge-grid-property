@@ -1,0 +1,23 @@
+{
+  "propertyId": "prp_428269",
+  "propertyName": "test.sandbox.akamaideveloper.com",
+  "accountId": "act_B-C-1FRYVMN",
+  "contractId": "ctr_C-1FRYVV3",
+  "groupId": "grp_111340",
+  "assetId": "aid_101",
+  "versions": {
+    "items": [
+      {
+        "propertyVersion": 1,
+        "updatedByUser": "afaden",
+        "updatedDate": "2014-03-04T21:12:57Z",
+        "productionStatus": "ACTIVE",
+        "stagingStatus": "INACTIVE",
+        "etag": "71573b922a87abc3",
+        "productId": "prd_Alta",
+        "ruleFormat": "latest",
+        "note": "initial version"
+      }
+    ]
+  }
+}

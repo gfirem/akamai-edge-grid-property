@@ -1,0 +1,19 @@
+{
+  "accountId": "act_B-C-1FRYVMN",
+  "contractId": "ctr_C-1FRYVV3",
+  "groupId": "grp_111340",
+  "propertyId": "prp_428269",
+  "propertyName": "test.sandbox.akamaideveloper.com",
+  "propertyVersion": 1,
+  "etag": "aeec6d39077b9ab59698c9aa31f9203de2b1b40f",
+  "hostnames": {
+    "items": []
+  },
+  "errors": [
+    {
+      "type": "https://problems.luna.akamaiapis.net/papi/v0/validation/empty_hostnames",
+      "errorLocation": "#/hostnames/items",
+      "detail": "At least one property hostname is required."
+    }
+  ]
+}

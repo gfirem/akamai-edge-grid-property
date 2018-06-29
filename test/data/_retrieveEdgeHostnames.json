@@ -1,0 +1,57 @@
+{
+  "accountId": "act_B-C-1FRYVMN",
+  "contractId": "ctr_C-1FRYVV3",
+  "groupId": "grp_111340",
+  "edgeHostnames": {
+    "items": [
+      {
+        "edgeHostnameId": "ehn_2767655",
+        "domainPrefix": "firsttest.worldtour.akamaideveloper.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "firsttest.worldtour.akamaideveloper.com.edgesuite.net"
+      },
+      {
+        "edgeHostnameId": "ehn_2767888",
+        "domainPrefix": "test2.mocha.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "test2.mocha.com.edgesuite.net"
+      },
+      {
+        "edgeHostnameId": "ehn_2767893",
+        "domainPrefix": "test3.mocha.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "test3.mocha.com.edgesuite.net"
+      },
+      {
+        "edgeHostnameId": "ehn_2775649",
+        "domainPrefix": "sandbox.akamaideveloper.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "sandbox.akamaideveloper.com.edgesuite.net"
+      },
+      {
+        "edgeHostnameId": "ehn_2802563",
+        "domainPrefix": "test.sandbox.akamaideveloper.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "test.sandbox.akamaideveloper.com.edgesuite.net"
+      },
+      {
+        "edgeHostnameId": "ehn_2804087",
+        "domainPrefix": "adhanuka.sandbox.akamaideveloper.com",
+        "domainSuffix": "edgesuite.net",
+        "ipVersionBehavior": "IPV6_COMPLIANCE",
+        "secure": false,
+        "edgeHostnameDomain": "adhanuka.sandbox.akamaideveloper.com.edgesuite.net"
+      }
+    ]
+  }
+}

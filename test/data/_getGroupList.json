@@ -1,0 +1,16 @@
+{
+  "accountId": "act_B-C-1FRYVMN",
+  "accountName": "Akamai DevRel & Advocates",
+  "groups": {
+    "items": [
+      {
+        "groupName": "DevOps World Tour",
+        "groupId": "grp_111340",
+        "parentGroupId": "grp_64867",
+        "contractIds": [
+          "ctr_C-1FRYVV3"
+        ]
+      }
+    ]
+  }
+}
